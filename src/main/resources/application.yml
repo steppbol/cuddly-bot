@@ -1,0 +1,21 @@
+server:
+  port: 8088
+
+application:
+  name: ${APPLICATION_NAME:}
+
+bot:
+  username: ${BOT_USERNAME:}
+  token: ${BOT_TOKEN:}
+  channel-id: ${CHANNEL_ID:}
+  webhook:
+    path: ${WEBHOOK_PATH:}
+  users-whitelist: ${USERS_WHITELIST:}
+
+instagram:
+  username: ${INSTAGRAM_USERNAME:}
+  password: ${INSTAGRAM_PASSWORD:}
+  account: ${INSTAGRAM_ACCOUNT:}
+
+locale:
+  tag: ${LOCALE_TAG:ru}

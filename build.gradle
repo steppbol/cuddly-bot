@@ -1,0 +1,63 @@
+buildscript {
+    ext {
+        botVersion = '1.0.0'
+        javaVersion = '11'
+
+        springBootPluginVersion = '2.4.1'
+        springDependencyManagementPluginVersion = '1.0.10.RELEASE'
+
+        jitpackRepository = "https://jitpack.io"
+
+        telegrambotsVersion = '5.0.1.1'
+
+        instagram4jVersion = '2.0.3'
+
+        okhttp3Version = '4.9.1'
+
+        jupiterVersion = '5.6.0'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version "${springBootPluginVersion}"
+    id 'io.spring.dependency-management' version "${springDependencyManagementPluginVersion}"
+}
+
+group 'com.home.ffanaticism'
+version "${botVersion}"
+sourceCompatibility = "${javaVersion}"
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+
+    maven { url "${jitpackRepository}" }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation "org.telegram:telegrambots-spring-boot-starter:${telegrambotsVersion}"
+
+    implementation "com.github.instagram4j:instagram4j:${instagram4jVersion}"
+
+    implementation "com.squareup.okhttp3:okhttp:${okhttp3Version}"
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:${okhttp3Version}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${okhttp3Version}"
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}"
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
